@@ -26,8 +26,9 @@ imgui.ini
 Assets.7z
 .idea/
 
-ALL_BUILD.vcxproj*
-ZERO_CHECK.vcxproj*
+*.vcxproj*
+!*.vcxproj.user.in
+cmake_install.cmake
 x64/*
 lib/
 *.dir/
