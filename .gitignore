@@ -26,6 +26,7 @@ imgui.ini
 Assets.7z
 .idea/
 
+*.sln
 *.vcxproj*
 !*.vcxproj.user.in
 cmake_install.cmake
