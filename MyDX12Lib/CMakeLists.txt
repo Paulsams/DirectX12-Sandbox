@@ -5,28 +5,48 @@ set( TARGET_NAME MyDX12Lib )
 set(CMAKE_CXX_STANDARD 20)
 
 set( HEADER_FILES
-    inc/DX12LibPCH.h
     inc/Application.h
+	inc/Camera.h
     inc/CommandQueue.h
+    inc/d3dx12.h
+	inc/Defines.h
+	inc/DescriptorAllocation.h
+	inc/DescriptorAllocator.h
+	inc/DescriptorAllocatorPage.h
+	inc/Defines.h
+	inc/Defines.h
+    inc/DX12LibPCH.h
+    inc/DynamicDescriptorHeap.h
+	inc/Events.h
     inc/Game.h
     inc/Helpers.h
-	inc/Events.h
     inc/HighResolutionClock.h
-	resource.h
-    inc/Window.h
-    inc/d3dx12.h
 	inc/Mathf.h
-	inc/Camera.h
+    inc/Resource.h
+	inc/ResourceStateTracker.h
+	inc/RootSignature.h
+	inc/TextureUsage.h
+	inc/UploadBuffer.h
+    inc/Window.h
+	resource.h
 )
 
 set( SOURCE_FILES
-    src/DX12LibPCH.cpp
     src/Application.cpp
+	src/Camera.cpp
     src/CommandQueue.cpp
+    src/DescriptorAllocation.cpp
+    src/DescriptorAllocator.cpp
+    src/DescriptorAllocatorPage.cpp
+    src/DX12LibPCH.cpp
+    src/DynamicDescriptorHeap.cpp
     src/Game.cpp
     src/HighResolutionClock.cpp
+    src/Resource.cpp
+    src/ResourceStateTracker.cpp
+    src/RootSignature.cpp
+    src/UploadBuffer.cpp
     src/Window.cpp
-	src/Camera.cpp
 )
 
 set( RESOURCE_FILES 

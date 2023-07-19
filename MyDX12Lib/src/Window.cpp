@@ -162,7 +162,7 @@ void Window::RegisterCallbacks(std::shared_ptr<Game> pGame)
     m_pGame = pGame;
 }
 
-void Window::OnUpdate(UpdateEventArgs&)
+void Window::OnUpdate(UpdateEventArgs& renderArgs)
 {
     m_UpdateClock.Tick();
 
@@ -170,18 +170,18 @@ void Window::OnUpdate(UpdateEventArgs&)
     {
         m_FrameCounter++;
 
-        UpdateEventArgs updateEventArgs(m_UpdateClock.GetDeltaSeconds(), m_UpdateClock.GetTotalSeconds());
+        UpdateEventArgs updateEventArgs(m_UpdateClock.GetDeltaSeconds(), m_UpdateClock.GetTotalSeconds(), renderArgs.FrameNumber);
         pGame->OnUpdate(updateEventArgs);
     }
 }
 
-void Window::OnRender(RenderEventArgs&)
+void Window::OnRender(RenderEventArgs& renderArgs)
 {
     m_RenderClock.Tick();
 
     if (auto pGame = m_pGame.lock())
     {
-        RenderEventArgs renderEventArgs(m_RenderClock.GetDeltaSeconds(), m_RenderClock.GetTotalSeconds());
+        RenderEventArgs renderEventArgs(m_RenderClock.GetDeltaSeconds(), m_RenderClock.GetTotalSeconds(), renderArgs.FrameNumber);
         pGame->OnRender(renderEventArgs);
     }
 }

@@ -1,7 +1,12 @@
-/**
-* The application class is used to create windows for our application.
-*/
 #pragma once
+
+/**
+ *  @file Application.h
+ *  @date October 22, 2018
+ *  @author Jeremiah van Oosten
+ *
+ *  @brief The application class is used to create windows for our application.
+ */
 
 #include <d3d12.h>
 #include <dxgi1_6.h>
@@ -94,6 +99,11 @@ public:
     Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> CreateDescriptorHeap(UINT numDescriptors, D3D12_DESCRIPTOR_HEAP_TYPE type);
     UINT GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE type) const;
 
+    static uint64_t GetFrameCount()
+    {
+        return ms_FrameCount;
+    }
+
 protected:
 
     // Create an application instance.
@@ -106,6 +116,8 @@ protected:
     bool CheckTearingSupport();
 
 private:
+    friend LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+    
     Application(const Application& copy) = delete;
     Application& operator=(const Application& other) = delete;
 
@@ -121,4 +133,5 @@ private:
 
     bool m_TearingSupported;
 
+    static uint64_t ms_FrameCount;
 };
